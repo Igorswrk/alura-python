@@ -3,23 +3,28 @@ print("Bem vindo ao jogo de Adivinhação!")
 print("*********************************")
 
 numero_secreto = 25
+total_de_tentativas = 3
+rodada = 1
 
-chute_str = input("Digite o seu numero: ")
+while(rodada <= total_de_tentativas):  # Em Python não temos Do-While
+    print("Tentativa {} de {}".format(rodada, total_de_tentativas))  # String Interpolation
+    chute_str = input("Digite o seu numero: ")
+    print("Voce digitou", chute_str)
+    numero_digitado = int(chute_str)
 
-print("Voce digitou", chute_str)
+    acertou = numero_digitado == numero_secreto
+    maior = numero_digitado > numero_secreto
+    menor = numero_digitado < numero_secreto
 
-numero_digitado = int(chute_str)
+    if(acertou):
+        print("Voce acertou!")
+    elif(maior):
+        print("Voce errou! O seu chute foi maior do que o numero secreto.")
+    else:
+        print("Voce errou! O seu chute foi menor do que o numero secreto.")
 
-acertou = numero_digitado == numero_secreto
-maior = numero_digitado > numero_secreto
-menor = numero_digitado < numero_secreto
+    rodada = rodada + 1
 
-if(acertou):
-    print("Voce acertou!")
-elif(maior):
-    print("Voce errou! O seu chute foi maior do que o numero secreto.")
-else:
-    print("Voce errou! O seu chute foi menor do que o numero secreto.")
 
 print("Fim do jogo")
 
