@@ -1,2 +1,2 @@
 # alura-python-projects
-Projetos criados na minhas formação de Python pela Alura. 
+Projetos criados na minha formação em Python pela Alura. 
