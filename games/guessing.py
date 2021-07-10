@@ -17,7 +17,7 @@ def play():
     if (difficulty == 1):
         total_attempts = 20
     elif (difficulty == 2):
-        total_attempts = 10
+        total_attempts = 101
     else:
         total_attempts = 5
 
