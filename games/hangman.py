@@ -5,10 +5,13 @@ def play():
     print("*****************************")
 
     secrect_word = "banana"
+    letter_board = ["_", "_", "_", "_", "_", "_"]
 
     hanged = False
     hit = False
 
+    print(letter_board)
+    
     while((not hanged) and (not hit)):
 
         guess = input("Which letter?")
@@ -17,9 +20,9 @@ def play():
         index = 0
         for letter in secrect_word:
             if(guess.upper() == letter.upper()):
-                print("I found the letter {} in position {}".format(letter, index))
+                letter_board[index] = letter
             index = index + 1
-        print("Playing...")
+        print(letter_board)
 
     print("Game Over")
 
