@@ -1,10 +1,20 @@
+import random
+
 
 def play():
     print("*****************************")
     print("***Welcome to the Hangman!***")
     print("*****************************")
 
-    secrect_word = "banana".upper()
+    words = []
+    with open("words.txt", "r") as archive:
+        for line in archive:
+            line = line.strip()
+            words.append(line)
+
+    number = random.randrange(0, len(words))
+    secrect_word = words[number].upper()
+
     letter_board = ["_" for letter in secrect_word]
 
     hanged = False
@@ -36,7 +46,7 @@ def play():
         elif(hanged):
             print("You lose!")
 
-    print("Game Over")
+    print("End Game")
 
 
 if(__name__ == "__main__"):
