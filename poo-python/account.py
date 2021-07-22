@@ -1,17 +1,20 @@
 class Account:
     def __init__(self, number, user, balance, limit):
         print(f'building object {self}')
-        self.number = number  # Atributos
-        self.user = user
-        self.balance = balance
-        self.limit = limit
+        self.__number = number  # Atributos
+        self.__user = user
+        self.__balance = balance
+        self.__limit = limit
 
     def deposit(self, value):
-        self.balance += value
+        self.__balance += value
 
     def withdraw(self, value):
-        self.balance -= value
+        self.__balance -= value
 
     def statement(self):
-        print(f"balance {self.balance} of the user {self.user}")
+        print(f"balance {self.__balance} of the user {self.__user}")
 
+    def transfer(self, value, destiny_account):
+        self.withdraw(value)
+        destiny_account.deposit(value)
