@@ -7,7 +7,9 @@
   * Laços de repetições.
   * Funções built-in.
   * Modularização.
-   
+
+---
+
 2. **Python 3 parte 2: Avançando na linguagem**. No qual pude desenvolver um jogo da forca para colocar em prática as habilidades aprendidas no curso, dentre elas: 
   * Manipulação de Strings.
   * Listas.
