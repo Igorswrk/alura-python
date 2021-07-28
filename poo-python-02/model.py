@@ -1,52 +1,48 @@
-class Film:
+class Program:
+    def __init__(self, name, year):
+        self._name = name.title()
+        self.year = year
+        self._likes = 0
+
+    @property
+    def likes(self):
+        return self._likes
+
+    def add_likes(self):
+        self._likes += 1
+
+    @property
+    def name(self):
+        return self._name
+
+    @name.setter
+    def name(self, new_name):
+        self._name = new_name
+
+
+class Film(Program):
     def __init__(self, name, year, running_time):
-        self.__name = name.title()
-        self.year = year
+        super().__init__(name, year)
         self.running_time = running_time
-        self.__likes = 0
-
-    @property
-    def likes(self):
-        return self.__likes
-
-    def add_likes(self):
-        self.__likes += 1
-
-    @property
-    def name(self):
-        return self.__name
-
-    @name.setter
-    def name(self, new_name):
-        self.__name = new_name
 
 
-class Series:
+class Series(Program):
     def __init__(self, name, year, seasons):
-        self.__name = name.title()
-        self.year = year
+        super().__init__(name, year)
         self.seasons = seasons
-        self.__likes = 0
-
-    @property
-    def likes(self):
-        return self.__likes
-
-    def add_likes(self):
-        self.__likes += 1
-
-    @property
-    def name(self):
-        return self.__name
-
-    @name.setter
-    def name(self, new_name):
-        self.__name = new_name
 
 
 avengers = Film('avengers - infinity war', 2018, 160)
-print(f'Name: {avengers.name} - Year: {avengers.year} - running_time: {avengers.running_time}')
-
 dark = Series('Dark', 2019, 3)
-print(f'Name: {dark.name} - Year: {dark.year} '
-      f'- Seasons: {dark.seasons}')
+
+avengers.add_likes()
+avengers.add_likes()
+avengers.add_likes()
+
+dark.add_likes()
+dark.add_likes()
+
+print(f'Name: {avengers.name} - Likes: {avengers.likes}')
+
+print(f'Name: {dark.name} - Likes: {dark.likes}')
+
