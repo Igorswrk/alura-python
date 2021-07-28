@@ -25,11 +25,17 @@ class Film(Program):
         super().__init__(name, year)
         self.running_time = running_time
 
+    def __str__(self):
+        return f'Name: {avengers.name} - {avengers.running_time} min | Likes: {avengers.likes}'
+
 
 class Series(Program):
     def __init__(self, name, year, seasons):
         super().__init__(name, year)
         self.seasons = seasons
+
+    def __str__(self):
+        return f'Name: {avengers.name} - {dark.seasons} seasons | Likes: {avengers.likes}'
 
 
 avengers = Film('avengers - infinity war', 2018, 160)
@@ -42,7 +48,7 @@ avengers.add_likes()
 dark.add_likes()
 dark.add_likes()
 
-print(f'Name: {avengers.name} - Likes: {avengers.likes}')
+program_list = [avengers, dark]
 
-print(f'Name: {dark.name} - Likes: {dark.likes}')
-
+for program in program_list:
+    print(program)
