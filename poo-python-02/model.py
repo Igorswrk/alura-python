@@ -26,7 +26,7 @@ class Film(Program):
         self.running_time = running_time
 
     def __str__(self):
-        return f'Name: {avengers.name} - {avengers.running_time} min | Likes: {avengers.likes}'
+        return f'Name: {self.name} - {self.running_time} min | Likes: {self.likes}'
 
 
 class Series(Program):
@@ -35,20 +35,46 @@ class Series(Program):
         self.seasons = seasons
 
     def __str__(self):
-        return f'Name: {avengers.name} - {dark.seasons} seasons | Likes: {avengers.likes}'
+        return f'Name: {self.name} - {self.seasons} seasons | Likes: {self.likes}'
+
+
+class Playlist:
+    def __init__(self, name, programs):
+        self.name = name
+        self._programs = programs
+
+    @property
+    def listing(self):
+        return self._programs
+
+    @property
+    def size(self):
+        return len(self._programs)
 
 
 avengers = Film('avengers - infinity war', 2018, 160)
 dark = Series('Dark', 2019, 3)
+punisher = Series('Punisher', 2017, 2)
+ironman = Film('Ironman 3', 2013, 180)
 
 avengers.add_likes()
 avengers.add_likes()
 avengers.add_likes()
+
+punisher.add_likes()
+punisher.add_likes()
+punisher.add_likes()
+punisher.add_likes()
+
+ironman.add_likes()
+ironman.add_likes()
 
 dark.add_likes()
-dark.add_likes()
 
-program_list = [avengers, dark]
+program_list = [avengers, dark, punisher, ironman]
+my_playlist = Playlist('Maratona', program_list)
 
-for program in program_list:
+for program in my_playlist.listing:
     print(program)
+
+print(f'Tamnho Playlist: {my_playlist.size}')
