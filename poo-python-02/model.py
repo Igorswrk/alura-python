@@ -43,12 +43,10 @@ class Playlist:
         self.name = name
         self._programs = programs
 
-    @property
-    def listing(self):
-        return self._programs
+    def __getitem__(self, item):
+        return self._programs[item]
 
-    @property
-    def size(self):
+    def __len__(self):
         return len(self._programs)
 
 
@@ -73,8 +71,7 @@ dark.add_likes()
 
 program_list = [avengers, dark, punisher, ironman]
 my_playlist = Playlist('Maratona', program_list)
+print(f'Tamnho Playlist: {len(my_playlist)}')
 
-for program in my_playlist.listing:
+for program in my_playlist:
     print(program)
-
-print(f'Tamnho Playlist: {my_playlist.size}')
