@@ -20,8 +20,8 @@ class Caelum(Employee):
 
 
 class Alura(Employee):
-    # def show_tasks(self):
-    #     print('Fez muita coisa, Alurete!')
+    def show_tasks(self):
+        print('Fez muita coisa, Alurete!')
 
     def search_unanswered_questions(self):
         print('Mostrando perguntas não respondidas do fórum')
