@@ -11,7 +11,7 @@ print(url_parameters)
 search_parameter = 'moedaDestino'
 index_parameter = url_parameters.find(search_parameter)
 index_value = index_parameter + len(search_parameter) + 1
-index_ampersand = url_parameters.find('&', index_parameter)
+index_ampersand = url_parameters.find('&', index_value)
 
 if index_ampersand == -1:
     value = url_parameters[index_value:]
