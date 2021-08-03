@@ -1,18 +1,22 @@
-url = "bytebank.com/cambio?moedaOrigem=real"  # Strings no Python são objetos imutáveis!
-print(url)
+url = "bytebank.com/cambio?quantidade=100&moedaOrigem=real&moedaDestino=dolar"
+# Strings no Python são objetos imutáveis!
 
-
-url_base = url[0:19]
-print(url_base)
-
-url_parameters = url[20:36]
+# Separa base e parametros
+index_query = url.find('?')
+url_base = url[:index_query]
+url_parameters = url[index_query+1:]
 print(url_parameters)
 
-"""
-URLs e seus formatos: como as URLs funcionam e o que cada parte de uma URL significa - base e parâmetros.
+# Busca valor de um parametro
+search_parameter = 'moedaDestino'
+index_parameter = url_parameters.find(search_parameter)
+index_value = index_parameter + len(search_parameter) + 1
+index_ampersand = url_parameters.find('&', index_parameter)
 
-O operador de fatiamento [a:b], utilizado para obter uma substring desde o índice a até o índice b - 1 da string 
-original. Lembrando que b - 1 pois o segundo argumento do fatiamento é exclusivo.
+if index_ampersand == -1:
+    value = url_parameters[index_value:]
+else:
+    value = url_parameters[index_value: index_ampersand]
 
-A string original não é alterada ao ser fatiada devido à sua imutabilidade.
-"""
+
+print(value)
