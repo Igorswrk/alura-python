@@ -210,3 +210,168 @@ accounts
 
 for account in accounts:
   print(account)
+
+"""# Polimorfismo e arrays
+
+#### Heranca e polimorfismo
+"""
+
+class Account:
+
+  def __init__(self, code):
+    self._code = code
+    self._balance = 0
+
+  def deposit(self, value):
+    self._balance += value
+  
+  def __str__(self):
+    return (f" Code: {self._code} >> Balance: {self._balance}")
+
+print(Account(88))
+
+class CorrentAccount(Account):
+
+  def spend_month(self):
+    self._balance -= 2
+
+class SavingsAccount(Account):
+  
+  def spend_month(self):
+    self._balance *= 1.01
+    self._balance -= 3
+
+account_16 = CorrentAccount(16)
+account_16.deposit(1000)
+account_16.spend_month()
+print(account_16)
+
+account_17 = SavingsAccount(17)
+account_17.deposit(2000)
+account_17.spend_month()
+print(account_17)
+
+account_16 = CorrentAccount(16)
+account_16.deposit(1000)
+account_17 = SavingsAccount(17)
+account_17.deposit(2000)
+accounts = [account_16, account_17]
+
+for account in accounts:
+  account.spend_month() # Duck Typing
+  print(account)
+
+"""#### Array ( Evitaremos ultilizar )
+
+"""
+
+import array as arr
+
+arr.array('d', [1, 3.5])
+
+"""Onde seria viável utilizarmos o array, existe uma biblioteca que consegue ser mais recomendada para realização da tarefa, como trabalhar com números e dados matemáticos específicos, estamos falando da biblioteca *numpy*, **bastante utilizada na área de data science.**
+
+
+
+
+```
+import numpy as np
+```
+
+
+"""
+
+import numpy as np
+
+numbers = np.array([1, 3.5])
+numbers
+
+numbers + 3
+
+"""#### Metodo Abstrato
+
+"""
+
+class Account:
+
+  def __init__(self, code):
+    self._code = code
+    self._balance = 0
+
+  def deposit(self, value):
+    self._balance += value
+  
+  def __str__(self):
+    return (f" Code: {self._code} >> Balance: {self._balance}")
+
+class CorrentAccount(Account):
+
+  def spend_month(self):
+    self._balance -= 2
+
+class SavingsAccount(Account):
+  
+  def spend_month(self):
+    self._balance *= 1.01
+    self._balance -= 3
+
+class InvestementAccount(Account):
+  pass
+
+InvestementAccount(600)
+
+"""Foi possível criar uma conta investimento mesmo sem ter o método de passar o mês **spend_month**, mas para forçar toda conta que será herdeira da classe *Account* a ter esse método devemos utilizar o *abstractMethod*
+
+OU SEJA, QUER FORCAR AS CLASSE TUDO QUE HERDA DA MAE TER O METODO X? SO COLOCA O METODO COMO METODO ABSTRATO, TAAAAAAAA?
+
+```
+import abc from ABCMeta, abstractmethod
+```
+
+
+"""
+
+from abc import ABCMeta, abstractmethod
+
+class Account(metaclass=ABCMeta):
+
+  def __init__(self, code):
+    self._code = code
+    self._balance = 0
+
+  def deposit(self, value):
+    self._balance += value
+  
+  @abstractmethod
+  def spend_month(self):
+    pass
+
+  def __str__(self):
+    return (f" Code: {self._code} >> Balance: {self._balance}")
+
+class CorrentAccount(Account):
+
+  def spend_month(self):
+    self._balance -= 2
+
+class SavingsAccount(Account):
+  
+  def spend_month(self):
+    self._balance *= 1.01
+    self._balance -= 3
+
+class InvestementAccount(Account):
+  pass
+
+print(Account(17))
+
+print(InvestementAccount(20))
+
+CorrentAccount(100)
+
+SavingsAccount(131)
+
+
+
+"""# Igualdade"""
+
