@@ -371,7 +371,109 @@ CorrentAccount(100)
 
 SavingsAccount(131)
 
+"""# Igualdade
 
+#### Igualdade e o `__eq__`
+"""
 
-"""# Igualdade"""
+class SalaryAccount:
+
+  def __init__(self, code):
+    self._code = code
+    self._balance = 0
+
+  def deposit(self, value):
+    self._balance += value
+
+  def __str__(self):
+    return (f" Code: {self._code} >> Balance: {self._balance}")
+
+account_01 = SalaryAccount(37)
+print(account_01)
+
+account_02 = SalaryAccount(37)
+print(account_02)
+
+account_01 == account_02
+
+accounts = [account_01]
+account_01 in accounts
+
+account_02 in accounts
+
+class SalaryAccount:
+
+  def __init__(self, code):
+    self._code = code
+    self._balance = 0
+
+  def __eq__(self, other):
+    return (self._code == other._code)
+
+  def deposit(self, value):
+    self._balance += value
+
+  def __str__(self):
+    return (f" Code: {self._code} >> Balance: {self._balance}")
+
+account_01 = SalaryAccount(37)
+
+account_02 = SalaryAccount(37)
+
+account_01 == account_02
+
+account_01 != account_02
+
+account_01 in [account_02]
+
+account_02 in [account_01]
+
+class SalaryAccount:
+
+  def __init__(self, code):
+    self._code = code
+    self._balance = 0
+
+  def __eq__(self, other):
+    return (self._code == other._code) and (self._balance == other._balance)
+
+  def deposit(self, value):
+    self._balance += value
+
+  def __str__(self):
+    return (f" Code: {self._code} >> Balance: {self._balance}")
+
+account_01 = SalaryAccount(37)
+account_02 = SalaryAccount(37)
+
+account_01.deposit(10)
+
+account_01 == account_02
+
+class SalaryAccount:
+
+  def __init__(self, code):
+    self._code = code
+    self._balance = 0
+
+  def __eq__(self, other):
+    if type(other) != SalaryAccount:
+      return False
+
+    return (self._code == other._code) and (self._balance == other._balance)
+
+  def deposit(self, value):
+    self._balance += value
+
+  def __str__(self):
+    return (f" Code: {self._code} >> Balance: {self._balance}")
+
+account_01 = SalaryAccount(37)
+account_02 = CorrentAccount(37)
+
+account_01 == account_02
+
+isinstance(CorrentAccount(37), CorrentAccount)
+
+isinstance(CorrentAccount(37), Account)
 
