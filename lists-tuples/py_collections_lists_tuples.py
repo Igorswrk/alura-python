@@ -477,3 +477,67 @@ isinstance(CorrentAccount(37), CorrentAccount)
 
 isinstance(CorrentAccount(37), Account)
 
+
+"""
+```
+# Outros Builtins
+
+#### Builtins como enumerated, range e desempacotamento automatico de tuplas
+```
+
+"""
+
+ages = [15, 87, 65, 56, 32, 49, 37]
+
+"""
+
+
+```
+# Imprimindo a posicao e o elemento da lista
+```
+
+"""
+
+range(len(ages))
+
+for i in range(len(ages)):
+    print(i, ages[i])
+
+enumerate(ages)
+
+"""
+
+```
+# forcando a geracao de valores de uma vez
+```
+"""
+
+list(range(len(ages)))
+
+list(enumerate(ages))
+
+"""
+
+```
+# Unpacking da nossa tupla
+```
+
+"""
+
+for index, age in enumerate(ages):
+    print(index, "x", age)
+
+users = [
+  ("Guilherme", 37, 1981),
+  ("Igor", 20, 2000),
+  ("Amanda", 19, 2001)
+]
+
+for name, age, birth in users: # Unpacking
+   print(name)
+
+for name, _, _ in users: # ignorando alguns elemntos com _, parecido com Haskell map
+    print(name)
+
+"""# Ordem Natural"""
+
