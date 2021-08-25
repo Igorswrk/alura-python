@@ -35,7 +35,7 @@ ages
 ages[4]
 
 for age in ages:
-    print(age)
+  print(age)
 
 ages.remove(30)
 
@@ -58,7 +58,7 @@ ages
 15 in ages
 
 if 15 in ages:
-    ages.remove(15)
+  ages.remove(15)
 
 ages
 
@@ -114,28 +114,24 @@ ages_next_year
 
 [(age) for age in ages if age > 21]
 
-
 def next_year(age):
-    return age + 1
-
+  return age + 1
 
 [next_year(age) for age in ages if age > 21]
 
 """# Tuplas"""
 
-
 class CorrentAccount:
 
-    def __init__(self, code):
-        self.code = code
-        self.balance = 0
+  def __init__(self, code):
+    self.code = code
+    self.balance = 0
 
-    def deposit(self, value):
-        self.balance += value
-
-    def __str__(self):
-        return (f" Code: {self.code} >> Balance: {self.balance}")
-
+  def deposit(self, value):
+    self.balance += value
+  
+  def __str__(self):
+    return (f" Code: {self.code} >> Balance: {self.balance}")
 
 account_01 = CorrentAccount(15)
 print(account_01)
@@ -147,19 +143,17 @@ accounts = [account_01, account_02]
 print(accounts)
 
 for account in accounts:
-    print(account)
+  print(account)
 
 account_01.deposit(100)
 account_02.deposit(500)
 
 for account in accounts:
-    print(account)
-
+  print(account)
 
 def deposit_for_all_accounts(accounts):
-    for account in accounts:
-        account.deposit(100)
-
+  for account in accounts:
+    account.deposit(100)
 
 accounts = [account_01, account_02]
 print(accounts[0], accounts[1])
@@ -187,12 +181,10 @@ print(account_01[1])
 
 account_01[1] += 10
 
-
-def deposit(account):  # Modelo Procedural (Separando comportamento dos dados)
-    new_balance = account[1] + 100
-    code = account_01[0]
-    return (code, new_balance)
-
+def deposit(account): # Modelo Procedural (Separando comportamento dos dados)
+  new_balance = account[1] + 100
+  code = account_01[0]
+  return (code, new_balance)
 
 account_01
 
@@ -207,52 +199,47 @@ users
 
 account_01 = CorrentAccount(15)
 
-accounts = (account_01, account_02)  # tuplas de objetos (podemos mudar o objeto, mas a tupla nao)
+accounts = (account_01, account_02) # tuplas de objetos (podemos mudar o objeto, mas a tupla nao)
 
 for account in accounts:
-    print(account)
+  print(account)
 
 accounts[1].deposit(500)
 
 accounts
 
 for account in accounts:
-    print(account)
+  print(account)
 
 """# Polimorfismo e arrays
 
 #### Heranca e polimorfismo
 """
 
-
 class Account:
 
-    def __init__(self, code):
-        self._code = code
-        self._balance = 0
+  def __init__(self, code):
+    self._code = code
+    self._balance = 0
 
-    def deposit(self, value):
-        self._balance += value
-
-    def __str__(self):
-        return (f" Code: {self._code} >> Balance: {self._balance}")
-
+  def deposit(self, value):
+    self._balance += value
+  
+  def __str__(self):
+    return (f" Code: {self._code} >> Balance: {self._balance}")
 
 print(Account(88))
 
-
 class CorrentAccount(Account):
 
-    def spend_month(self):
-        self._balance -= 2
-
+  def spend_month(self):
+    self._balance -= 2
 
 class SavingsAccount(Account):
-
-    def spend_month(self):
-        self._balance *= 1.01
-        self._balance -= 3
-
+  
+  def spend_month(self):
+    self._balance *= 1.01
+    self._balance -= 3
 
 account_16 = CorrentAccount(16)
 account_16.deposit(1000)
@@ -271,8 +258,8 @@ account_17.deposit(2000)
 accounts = [account_16, account_17]
 
 for account in accounts:
-    account.spend_month()  # Duck Typing
-    print(account)
+  account.spend_month() # Duck Typing
+  print(account)
 
 """#### Array ( Evitaremos ultilizar )
 
@@ -306,36 +293,31 @@ numbers + 3
 #### Metodo Abstrato
 """
 
-
 class Account:
 
-    def __init__(self, code):
-        self._code = code
-        self._balance = 0
+  def __init__(self, code):
+    self._code = code
+    self._balance = 0
 
-    def deposit(self, value):
-        self._balance += value
-
-    def __str__(self):
-        return (f" Code: {self._code} >> Balance: {self._balance}")
-
+  def deposit(self, value):
+    self._balance += value
+  
+  def __str__(self):
+    return (f" Code: {self._code} >> Balance: {self._balance}")
 
 class CorrentAccount(Account):
 
-    def spend_month(self):
-        self._balance -= 2
-
+  def spend_month(self):
+    self._balance -= 2
 
 class SavingsAccount(Account):
-
-    def spend_month(self):
-        self._balance *= 1.01
-        self._balance -= 3
-
+  
+  def spend_month(self):
+    self._balance *= 1.01
+    self._balance -= 3
 
 class InvestementAccount(Account):
-    pass
-
+  pass
 
 InvestementAccount(600)
 
@@ -352,40 +334,35 @@ import abc from ABCMeta, abstractmethod
 
 from abc import ABCMeta, abstractmethod
 
-
 class Account(metaclass=ABCMeta):
 
-    def __init__(self, code):
-        self._code = code
-        self._balance = 0
+  def __init__(self, code):
+    self._code = code
+    self._balance = 0
 
-    def deposit(self, value):
-        self._balance += value
+  def deposit(self, value):
+    self._balance += value
+  
+  @abstractmethod
+  def spend_month(self):
+    pass
 
-    @abstractmethod
-    def spend_month(self):
-        pass
-
-    def __str__(self):
-        return (f" Code: {self._code} >> Balance: {self._balance}")
-
+  def __str__(self):
+    return (f" Code: {self._code} >> Balance: {self._balance}")
 
 class CorrentAccount(Account):
 
-    def spend_month(self):
-        self._balance -= 2
-
+  def spend_month(self):
+    self._balance -= 2
 
 class SavingsAccount(Account):
-
-    def spend_month(self):
-        self._balance *= 1.01
-        self._balance -= 3
-
+  
+  def spend_month(self):
+    self._balance *= 1.01
+    self._balance -= 3
 
 class InvestementAccount(Account):
-    pass
-
+  pass
 
 print(Account(17))
 
@@ -395,24 +372,24 @@ CorrentAccount(100)
 
 SavingsAccount(131)
 
+
+
 """# Igualdade
 
 #### Igualdade e o `__eq__`
 """
 
-
 class SalaryAccount:
 
-    def __init__(self, code):
-        self._code = code
-        self._balance = 0
+  def __init__(self, code):
+    self._code = code
+    self._balance = 0
 
-    def deposit(self, value):
-        self._balance += value
+  def deposit(self, value):
+    self._balance += value
 
-    def __str__(self):
-        return (f" Code: {self._code} >> Balance: {self._balance}")
-
+  def __str__(self):
+    return (f" Code: {self._code} >> Balance: {self._balance}")
 
 account_01 = SalaryAccount(37)
 print(account_01)
@@ -427,22 +404,20 @@ account_01 in accounts
 
 account_02 in accounts
 
-
 class SalaryAccount:
 
-    def __init__(self, code):
-        self._code = code
-        self._balance = 0
+  def __init__(self, code):
+    self._code = code
+    self._balance = 0
 
-    def __eq__(self, other):
-        return (self._code == other._code)
+  def __eq__(self, other):
+    return (self._code == other._code)
 
-    def deposit(self, value):
-        self._balance += value
+  def deposit(self, value):
+    self._balance += value
 
-    def __str__(self):
-        return (f" Code: {self._code} >> Balance: {self._balance}")
-
+  def __str__(self):
+    return (f" Code: {self._code} >> Balance: {self._balance}")
 
 account_01 = SalaryAccount(37)
 
@@ -456,22 +431,20 @@ account_01 in [account_02]
 
 account_02 in [account_01]
 
-
 class SalaryAccount:
 
-    def __init__(self, code):
-        self._code = code
-        self._balance = 0
+  def __init__(self, code):
+    self._code = code
+    self._balance = 0
 
-    def __eq__(self, other):
-        return (self._code == other._code) and (self._balance == other._balance)
+  def __eq__(self, other):
+    return (self._code == other._code) and (self._balance == other._balance)
 
-    def deposit(self, value):
-        self._balance += value
+  def deposit(self, value):
+    self._balance += value
 
-    def __str__(self):
-        return (f" Code: {self._code} >> Balance: {self._balance}")
-
+  def __str__(self):
+    return (f" Code: {self._code} >> Balance: {self._balance}")
 
 account_01 = SalaryAccount(37)
 account_02 = SalaryAccount(37)
@@ -480,25 +453,23 @@ account_01.deposit(10)
 
 account_01 == account_02
 
-
 class SalaryAccount:
 
-    def __init__(self, code):
-        self._code = code
-        self._balance = 0
+  def __init__(self, code):
+    self._code = code
+    self._balance = 0
 
-    def __eq__(self, other):
-        if type(other) != SalaryAccount:
-            return False
+  def __eq__(self, other):
+    if type(other) != SalaryAccount:
+      return False
 
-        return (self._code == other._code) and (self._balance == other._balance)
+    return (self._code == other._code) and (self._balance == other._balance)
 
-    def deposit(self, value):
-        self._balance += value
+  def deposit(self, value):
+    self._balance += value
 
-    def __str__(self):
-        return (f" Code: {self._code} >> Balance: {self._balance}")
-
+  def __str__(self):
+    return (f" Code: {self._code} >> Balance: {self._balance}")
 
 account_01 = SalaryAccount(37)
 account_02 = CorrentAccount(37)
@@ -508,6 +479,8 @@ account_01 == account_02
 isinstance(CorrentAccount(37), CorrentAccount)
 
 isinstance(CorrentAccount(37), Account)
+
+
 
 """# Outros Builtins
 
@@ -527,8 +500,8 @@ ages = [15, 87, 65, 56, 32, 49, 37]
 
 range(len(ages))
 
-for i in range(len(ages)):
-    print(i, ages[i])
+for i  in range(len(ages)):
+  print(i, ages[i])
 
 enumerate(ages)
 
@@ -552,31 +525,31 @@ list(enumerate(ages))
 """
 
 for index, age in enumerate(ages):
-    print(index, "x", age)
+  print(index, "x", age)
 
 users = [
-    ("Guilherme", 37, 1981),
-    ("Igor", 20, 2000),
-    ("Amanda", 19, 2001)
+  ("Guilherme", 37, 1981),
+  ("Igor", 20, 2000),
+  ("Amanda", 19, 2001)
 ]
 
-for name, age, birth in users:  # Unpacking
-    print(name)
+for name, age, birth in users: # Unpacking
+  print(name)
 
-for name, _, _ in users:  # ignorando alguns elemntos com _, parecido com Haskell map
-    print(name)
+for name, _, _ in users: # ignorando alguns elemntos com _, parecido com Haskell map
+  print(name)
 
 """# Ordem Natural"""
 
 ages = [15, 87, 65, 56, 32, 49, 37]
 
-sorted(ages)  # Ordenando as idades em ordem crescente (copia)
+sorted(ages) # Ordenando as idades em ordem crescente (copia)
 
-list(reversed(ages))  # printando a idade com os elementos ao contrario (copia)
+list(reversed(ages)) # printando a idade com os elementos ao contrario (copia)
 
-sorted(ages, reverse=True)  # Ordenando em ordem decrescente, (copia)
+sorted(ages, reverse=True) # Ordenando em ordem decrescente, (copia)
 
-ages.sort()  # Ordenando ordem crescente, (memoria)
+ages.sort() # Ordenando ordem crescente, (memoria)
 ages
 
 """# Ordenacao Customizada
@@ -584,3 +557,184 @@ ages
 
 """
 
+names = ["Igor", "Amanda", "Mel"]
+sorted(names)
+
+names = ["Igor", "amanda", "Mel"] # Maiscula tem prioridade
+sorted(names)
+
+class SalaryAccount:
+
+  def __init__(self, code):
+    self._code = code
+    self._balance = 0
+
+  def __eq__(self, other):
+    if type(other) != SalaryAccount:
+      return False
+
+    return (self._code == other._code) and (self._balance == other._balance)
+
+  def deposit(self, value):
+    self._balance += value
+
+  def __str__(self):
+    return (f" Code: {self._code} >> Balance: {self._balance}")
+
+igor_account = SalaryAccount(10)
+igor_account.deposit(500)
+
+amanda_account = SalaryAccount(20)
+amanda_account.deposit(1000)
+
+mel_account = SalaryAccount(30)
+mel_account.deposit(420)
+
+accounts = [igor_account, amanda_account, mel_account]
+
+for account in accounts:
+    print(account)
+
+sorted(accounts)
+
+igor_account < amanda_account
+
+def extract_balance(account):
+    return account._balance
+
+for account in sorted(accounts, key=extract_balance):
+    print(account)
+
+# attrgetter, ajuda a pegar um atributo
+
+from operator import attrgetter
+
+for account in sorted(accounts, key=attrgetter("_code", "_balance")):
+    print(account)
+
+igor_account < amanda_account
+
+class SalaryAccount:
+
+  def __init__(self, code):
+    self._code = code
+    self._balance = 0
+
+  def __eq__(self, other):
+    if type(other) != SalaryAccount:
+      return False
+
+    return (self._code == other._code) and (self._balance == other._balance)
+
+  def __lt__(self, other): # Comparacao {less than}
+    return self._balance < other._balance
+
+  def deposit(self, value):
+    self._balance += value
+
+  def __str__(self):
+    return (f" Code: {self._code} >> Balance: {self._balance}")
+
+igor_account < amanda_account
+
+igor_account = SalaryAccount(10)
+igor_account.deposit(500)
+
+amanda_account = SalaryAccount(20)
+amanda_account.deposit(1000)
+
+mel_account = SalaryAccount(30)
+mel_account.deposit(420)
+
+accounts = [igor_account, amanda_account, mel_account]
+
+igor_account < amanda_account
+
+amanda_account < igor_account
+
+class SalaryAccount:
+
+  def __init__(self, code):
+    self._code = code
+    self._balance = 0
+
+  def __eq__(self, other):
+    if type(other) != SalaryAccount:
+      return False
+
+    return (self._code == other._code) and (self._balance == other._balance)
+
+  def __lt__(self, other): # Comparacao {less than}
+    if self._balance != other._balance: 
+        return self._balance < other._balance
+        
+    return self._code < other._code
+
+  def deposit(self, value):
+    self._balance += value
+
+  def __str__(self):
+    return (f" Code: {self._code} >> Balance: {self._balance}")
+
+igor_account = SalaryAccount(10)
+igor_account.deposit(1000)
+
+amanda_account = SalaryAccount(20)
+amanda_account.deposit(500)
+
+mel_account = SalaryAccount(30)
+mel_account.deposit(1000)
+
+accounts = [igor_account, amanda_account, mel_account]
+
+for account in sorted(accounts):
+    print(account)
+
+igor_account <= amanda_account
+
+""" 
+Para tratar todas as comparacoes importamos total_ordering do fuctools, mas
+primeiro devemos implementar o metodo __eq__ e outro metodo de comparacao, 
+entre eles __lt__, __le__.
+
+"""
+
+from functools import total_ordering
+
+@total_ordering
+class SalaryAccount:
+
+  def __init__(self, code):
+    self._code = code
+    self._balance = 0
+
+  def __eq__(self, other):
+    if type(other) != SalaryAccount:
+      return False
+
+    return (self._code == other._code) and (self._balance == other._balance)
+
+  def __lt__(self, other): # Comparacao {less than}
+    if self._balance != other._balance: 
+        return self._balance < other._balance
+        
+    return self._code < other._code
+
+  def deposit(self, value):
+    self._balance += value
+
+  def __str__(self):
+    return (f" Code: {self._code} >> Balance: {self._balance}")
+
+igor_account = SalaryAccount(10)
+igor_account.deposit(1000)
+
+amanda_account = SalaryAccount(20)
+amanda_account.deposit(500)
+
+mel_account = SalaryAccount(30)
+mel_account.deposit(1000)
+
+accounts = [igor_account, amanda_account, mel_account]
+
+igor_account <= amanda_account
