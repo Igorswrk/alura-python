@@ -44,3 +44,9 @@
   * Um pouco mais sobre POO
   * Expressões regulares - RegEX
   * Métodos especiais em Python
+---
+6. **Python Collections parte 1: Listas e tuplas**. No qual aprendi um pouco mais sobre listas e tuplas, No qual pude desenvolver uma simulação de algumas operações de uma conta bancária, com o intuito de colocar em prática as habilidades aprendidas no curso, ultilizando google colab com um jupyter notebook do python3, dentre elas: 
+  * Operações com listas
+  * Operações com tuplas
+  * Array no Python, (numpy)
+  * Ordenação de listas
