@@ -45,8 +45,13 @@
   * Expressões regulares - RegEX
   * Métodos especiais em Python
 ---
-6. **Python Collections parte 1: Listas e tuplas**. No qual aprendi um pouco mais sobre listas e tuplas, No qual pude desenvolver uma simulação de algumas operações de uma conta bancária, com o intuito de colocar em prática as habilidades aprendidas no curso, ultilizando google colab com um jupyter notebook do python3, dentre elas: 
+6. **Python Collections parte 1: Listas e tuplas**. No qual aprendi um pouco mais sobre listas e tuplas, pude desenvolver uma simulação de algumas operações de uma conta bancária, com o intuito de colocar em prática as habilidades aprendidas no curso, ultilizando google colab com um jupyter notebook do python3, dentre elas: 
   * Operações com listas
   * Operações com tuplas
   * Array no Python, (numpy)
   * Ordenação de listas
+---
+7. **Python Collections parte 2: Conjuntos e dicionários**. No qual aprendi um pouco mais sobre conjuntos e dicionários, pude desenvolver uma simulação de algumas operações de uma conta bancária, além de programar um algoritmo que pega um texto e faz a contagem da quantidade de vezes que um determinado caracter aparece no texto (genérico) com o intuito de colocar em prática as habilidades aprendidas na sessão de Python Collections, ultilizando google colab com um jupyter notebook do python3, assim como no modulo 6 do curso, dentre elas: 
+  * Operações e manipulação de Conjuntos (sets)
+  * Criação de dicionários e manipulação.
+ 
