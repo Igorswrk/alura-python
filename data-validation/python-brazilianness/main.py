@@ -1,6 +1,4 @@
-from validate_docbr import CPF
 from cpf import Cpf
 
-cpf = CPF()
-
-print(cpf.validate("223203203023"))
+cpf_user = Cpf("09962725690")
+print(cpf_user)
