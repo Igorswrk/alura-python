@@ -1,22 +1,20 @@
-from create_docs import Document
+from datetime import datetime, timedelta
+from dates import Dates
+from dates import Register
 
-from phones import PhonesBr
-from validate_docbr import CPF
-from validate_docbr import CNPJ
+# today = Dates()
+# print(today.registration_time())
 
-cnpj = CNPJ()
-cpf = CPF()
+today = Register()
+print(today.registered_days())
 
-# cpf_user = Cpf("09962725690")
-# print(cpf_user)
 
-new_cpnj = cnpj.generate()
-new_cpf = cpf.generate()
+'''
+today = datetime.today()
+today_formated = today.strftime("%d/%m/%Y %H:%M")
 
-document = Document.create_new(new_cpnj)
-print(document)
+print(today)
+print(today_formated)
+print(type(today_formated))
+'''
 
-phone = "552126481234"
-new_phone = PhonesBr(phone)
-
-print(new_phone)
