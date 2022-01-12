@@ -18,3 +18,10 @@ print(today_formated)
 print(type(today_formated))
 '''
 
+<<<<<<< HEAD
+=======
+phone = "552126481234"
+new_phone = PhonesBr(phone)
+
+print(new_phone)
+>>>>>>> b3c9b1a7492bdfb44ffb7c7aa7a2f668fc7db097
