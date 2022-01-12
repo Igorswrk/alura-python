@@ -1,27 +1,23 @@
-from datetime import datetime, timedelta
-from dates import Dates
-from dates import Register
+import requests
 
-# today = Dates()
-# print(today.registration_time())
+from acess_cep import SearchAddress
 
-today = Register()
-print(today.registered_days())
+cep = "01001000"
+obj_cep = SearchAddress(cep)
+
+bairro, cidade, uf = obj_cep.acess_viacep()
+print(bairro, cidade, uf)
 
 
-'''
-today = datetime.today()
-today_formated = today.strftime("%d/%m/%Y %H:%M")
+def return_address(cep):
+    url = 'https://viacep.com.br/ws/{}/json'.format(cep)
+    r = requests.get(url)
+    dados = r.json()
+    bairro = dados.get('bairro')
+    cidade = dados.get('localidade')
+    uf = dados.get('uf')
+    return bairro, cidade, uf
 
-print(today)
-print(today_formated)
-print(type(today_formated))
-'''
 
-<<<<<<< HEAD
-=======
-phone = "552126481234"
-new_phone = PhonesBr(phone)
-
-print(new_phone)
->>>>>>> b3c9b1a7492bdfb44ffb7c7aa7a2f668fc7db097
+bairro1, cidade1, uf1 = return_address(cep)
+print(bairro1, cidade1, uf1)
