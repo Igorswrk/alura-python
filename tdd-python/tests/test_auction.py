@@ -1,6 +1,7 @@
 from unittest import TestCase
 
 from src.auction.domain import Bidding, Auction, User
+from src.auction.exceptions import InvalidBidding
 
 
 class TestAuction(TestCase):
@@ -24,7 +25,7 @@ class TestAuction(TestCase):
         self.assertEqual(highest_expected_value, self.auction.highest_bidding)
 
     def test_should_not_allow_add_bidding_in_descending_order(self):
-        with self.assertRaises(ValueError):
+        with self.assertRaises(InvalidBidding):
             amanda = User('amanda', 500.0)
             bidding_amanda = Bidding(amanda, 100.0)
 
@@ -72,6 +73,6 @@ class TestAuction(TestCase):
     def test_should_not_allow_add_bidding_if_the_last_user_is_the_same(self):
         bidding_igor_200 = Bidding(self.igor, 200.0)
 
-        with self.assertRaises(ValueError):
+        with self.assertRaises(InvalidBidding):
             self.auction.add_bidding(self.bidding_igor)
             self.auction.add_bidding(bidding_igor_200)
