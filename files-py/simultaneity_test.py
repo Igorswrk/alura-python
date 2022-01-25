@@ -20,3 +20,4 @@ dentro do escopo do with, então é uma forma de gerenciar o contexto de ultiliz
 Além de arquivos, podemos utilizar o with para gerenciar 
 processos que precisam de uma pré e pós condição de execução
 """
+
